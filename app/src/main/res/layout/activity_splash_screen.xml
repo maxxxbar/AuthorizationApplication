@@ -21,14 +21,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_one"
-        app:srcCompat="@drawable/ic_splash_logo" />
+        app:srcCompat="@drawable/ic_splash_logo"
+        android:contentDescription="@string/splash_logo_description" />
 
     <TextView
         android:id="@+id/subtitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hyphenationFrequency="none"
-        android:text="УСТАНОВКА И ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ ДОМОФОНОВ, \n СИСТЕМ ВИДЕОНАБЛЮДЕНИЯ"
+        android:text="@string/splash_screen_subtitle"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_two"

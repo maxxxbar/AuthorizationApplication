@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Authorization Application</string>
+    <string name="btn_registration_title">Регистрация</string>
+    <string name="btn_login_title">Авторизация</string>
+    <string name="check_box_push_title">Разрешить отправку push уведомлений</string>
+    <string name="check_box_location_title">Разрешить доступ к геопозиции</string>
+    <string name="splash_screen_subtitle">УСТАНОВКА И ТЕХНИЧЕСКОЕ ОБСЛУЖИВАНИЕ ДОМОФОНОВ, СИСТЕМ ВИДЕОНАБЛЮДЕНИЯ</string>
+    <string name="splash_logo_description">Splash logo</string>
 </resources>
