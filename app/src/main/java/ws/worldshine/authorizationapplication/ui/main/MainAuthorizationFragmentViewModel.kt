@@ -1,4 +1,4 @@
-package ws.worldshine.authorizationapplication.ui
+package ws.worldshine.authorizationapplication.ui.main
 
 import androidx.lifecycle.ViewModel
 

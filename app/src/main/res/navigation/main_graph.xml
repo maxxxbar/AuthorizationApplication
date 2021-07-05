@@ -6,7 +6,16 @@
     app:startDestination="@id/mainAuthorizationFragment">
     <fragment
         android:id="@+id/mainAuthorizationFragment"
-        android:name="ws.worldshine.authorizationapplication.ui.MainAuthorizationFragment"
+        android:name="ws.worldshine.authorizationapplication.ui.main.MainAuthorizationFragment"
         android:label="main_authorization_fragment"
-        tools:layout="@layout/main_authorization_fragment" />
+        tools:layout="@layout/main_authorization_fragment" >
+        <action
+            android:id="@+id/action_mainAuthorizationFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="ws.worldshine.authorizationapplication.ui.authorization.AuthorizationFragment"
+        android:label="authorization_fragment"
+        tools:layout="@layout/authorization_fragment" />
 </navigation>

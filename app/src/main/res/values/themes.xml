@@ -13,18 +13,31 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+        <item name="fontFamily">@font/nunito</item>
+        <item name="checkboxStyle">@style/App.CheckBox</item>
+        <item name="editTextStyle">@style/App.EditText</item>
 
     </style>
 
-    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+    <style name="App.EditText" parent="Widget.AppCompat.EditText">
+        <item name="backgroundTint">@color/blue</item>
+        <item name="android:textCursorDrawable">@color/blue</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textColorHighlight">@color/purple_200</item>
+        <item name="android:textColorLink">@color/blue</item>
+    </style>
+
+    <style name="App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
         <item name="android:textColor">@color/blue</item>
-
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
     </style>
 
     <style name="ThemeOverlay.App.CheckBox" parent="">
         <item name="colorOnSurface">@color/blue</item>
         <item name="colorSecondary">@color/blue</item>
+        <item name="fontFamily">@font/nunito</item>
+
     </style>
 </resources>
