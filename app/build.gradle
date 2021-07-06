@@ -56,5 +56,4 @@ dependencies {
 
     implementation 'com.redmadrobot:input-mask-android:6.0.0'
 
-
 }
