@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import ws.worldshine.authorizationapplication.R
 import ws.worldshine.authorizationapplication.databinding.EnterCodeFragmentBinding
 import ws.worldshine.authorizationapplication.utils.hideKeyboard
@@ -31,6 +34,7 @@ class EnterCodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.background = AppCompatResources.getDrawable(requireContext(),R.drawable.ic_background)
         initViews()
         binding.root.setOnClickListener { hideKeyboard() }
         initEditText()
@@ -38,6 +42,19 @@ class EnterCodeFragment : Fragment() {
         val number = arguments?.getString("phone")
         val numberDescriptionText = getString(R.string.textView_sms_description)
         binding.textViewSmsDescription.text = String.format(numberDescriptionText, number)
+        KeyboardVisibilityEvent.setEventListener(
+            requireActivity(),
+            viewLifecycleOwner,
+            {
+
+                if (it) {
+                    view.background =
+                        AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background_without_bottom)
+                } else {
+                    view.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
+                }
+
+            })
     }
 
     private fun initViews() {

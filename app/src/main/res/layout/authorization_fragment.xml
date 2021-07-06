@@ -5,16 +5,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_background"
-        android:padding="15dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
         tools:context=".ui.authorization.AuthorizationFragment">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/auth_fragment_guideline"
+            android:id="@+id/auth_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
+            app:layout_constraintGuide_percent="0.27" />
 
         <TextView
             android:id="@+id/btn_enter_phone"
@@ -24,13 +24,13 @@
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/auth_fragment_guideline" />
+            app:layout_constraintTop_toTopOf="@+id/auth_guideline" />
 
         <TextView
             android:id="@+id/enter_phone_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="@string/enter_phone_title"
             app:layout_constraintStart_toStartOf="@+id/btn_enter_phone"
             app:layout_constraintTop_toBottomOf="@+id/btn_enter_phone" />
@@ -50,7 +50,7 @@
             <Spinner
                 android:id="@+id/spinner_number_prefix"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginStart="0dp"
                 android:layout_marginEnd="0dp"
@@ -61,13 +61,16 @@
             <EditText
                 android:id="@+id/edit_text_number"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.35"
                 android:autofillHints="no"
+                android:background="@null"
                 android:digits="1234567890+-() "
                 android:inputType="number"
                 android:maxLines="1"
-                tools:ignore="LabelFor" />
+                android:scrollbars="none"
+                tools:ignore="LabelFor"
+                tools:text="8 123 222 22 33" />
         </LinearLayout>
 
         <Button
@@ -75,7 +78,7 @@
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:text="@string/btn_get_code_title"
             android:textAllCaps="false"
             app:cornerRadius="10dp"
@@ -83,31 +86,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+        <Button
+            android:id="@+id/btn_sing_in"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_get_code"
+            tools:text="Зарегестрирован? Войти" />
+
         <TextView
             android:id="@+id/textView_terms_of_use"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/terms_of_use_title"
             android:textColor="#80FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_sing_in" />
-
-        <Button
-            android:id="@+id/btn_sing_in"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textAllCaps="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_get_code" />
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

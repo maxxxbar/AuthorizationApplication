@@ -9,14 +9,17 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.bundleOf
 import androidx.core.text.bold
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.coroutines.launch
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import ws.worldshine.authorizationapplication.R
 import ws.worldshine.authorizationapplication.databinding.AuthorizationFragmentBinding
 import ws.worldshine.authorizationapplication.utils.hideKeyboard
@@ -54,13 +57,35 @@ class AuthorizationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.background = AppCompatResources.getDrawable(requireContext(),R.drawable.ic_background)
         initViews()
         setSingInButton()
         initCodeButton()
-        binding.root.setOnClickListener { hideKeyboard() }
+        binding.root.setOnClickListener {
+            hideKeyboard()
+            view.findFocus()?.clearFocus()
+        }
         val listener = MaskedTextChangedListener.installOn(editText, "[000] [000]-[00]-[00]", valueListener)
         termOfUseTitle.makeLinks(createLink("Условия использования"), createLink("Политку конфиденциальности"))
         editText.hint = listener.placeholder()
+        editText.setOnFocusChangeListener { _, hasFocus ->
+
+        }
+
+        KeyboardVisibilityEvent.setEventListener(
+            requireActivity(),
+            viewLifecycleOwner,
+            {
+//                singInBtn.isVisible = !it
+                termOfUseTitle.isVisible = !it
+                if (it) {
+                    view.background =
+                        AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background_without_bottom)
+                } else {
+                    view.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
+                }
+
+            })
     }
 
     private fun initCodeButton() {
