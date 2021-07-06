@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/mainAuthorizationFragment">
+    <fragment
+        android:id="@+id/mainAuthorizationFragment"
+        android:name="ws.worldshine.authorizationapplication.ui.main.MainAuthorizationFragment"
+        android:label="main_authorization_fragment"
+        tools:layout="@layout/main_authorization_fragment">
+        <action
+            android:id="@+id/action_mainAuthorizationFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="ws.worldshine.authorizationapplication.ui.authorization.AuthorizationFragment"
+        android:label="authorization_fragment"
+        tools:layout="@layout/authorization_fragment">
+        <action
+            android:id="@+id/action_authorizationFragment_to_termsOfUseFragment"
+            app:destination="@id/termsOfUseFragment" />
+        <action
+            android:id="@+id/action_authorizationFragment_to_enterCodeFragment"
+            app:destination="@id/enterCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsOfUseFragment"
+        android:name="ws.worldshine.authorizationapplication.ui.TermsOfUseFragment"
+        android:label="TermsOfUseFragment" />
+    <fragment
+        android:id="@+id/enterCodeFragment"
+        android:name="ws.worldshine.authorizationapplication.ui.entercode.EnterCodeFragment"
+        android:label="enter_code_fragment"
+        tools:layout="@layout/enter_code_fragment">
+    </fragment>
+</navigation>
