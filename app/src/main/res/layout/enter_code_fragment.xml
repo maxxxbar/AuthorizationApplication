@@ -12,14 +12,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.27" />
 
         <TextView
             android:id="@+id/entry_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/entry_code_title"
-            android:textSize="46sp"
+            android:textSize="@dimen/text_36"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/enter_fragment_guideline" />
@@ -28,9 +28,9 @@
             android:id="@+id/textView_sms_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/margin_10"
             android:text="@string/textView_sms_title"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/entry_code" />
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/textView_sms_description"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_sms_title" />
@@ -49,7 +49,7 @@
             android:id="@+id/textView_new_code_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/margin_5"
             android:layout_weight="1"
             android:text="@string/textView_new_code_title"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,9 +67,9 @@
 
         <LinearLayout
             android:id="@+id/linearLayout_code_group"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_40"
+            android:layout_marginTop="@dimen/margin_20"
             android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -78,16 +78,18 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_10"
                 android:layout_weight="1"
                 android:background="@drawable/rectangle"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editText_one"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/width_32"
+                    android:layout_height="match_parent"
                     android:autofillHints="no"
+                    android:background="@null"
                     android:digits="1234567890"
                     android:ems="10"
                     android:gravity="center"
@@ -98,16 +100,18 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_10"
                 android:layout_weight="1"
                 android:background="@drawable/rectangle"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editText_two"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/width_32"
+                    android:layout_height="match_parent"
                     android:autofillHints="no"
+                    android:background="@null"
                     android:digits="1234567890"
                     android:ems="10"
                     android:gravity="center"
@@ -118,16 +122,18 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/margin_10"
                 android:layout_weight="1"
                 android:background="@drawable/rectangle"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editText_three"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/width_32"
+                    android:layout_height="match_parent"
                     android:autofillHints="no"
+                    android:background="@null"
                     android:digits="1234567890"
                     android:ems="10"
                     android:gravity="center"
@@ -138,16 +144,17 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/rectangle"
                 android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/editText_four"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/width_32"
+                    android:layout_height="match_parent"
                     android:autofillHints="no"
+                    android:background="@null"
                     android:digits="1234567890"
                     android:ems="10"
                     android:gravity="center"

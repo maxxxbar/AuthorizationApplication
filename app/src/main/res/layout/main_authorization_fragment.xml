@@ -15,7 +15,7 @@
         android:layout_marginEnd="20dp"
         android:text="@string/btn_registration_title"
         android:textAllCaps="false"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:layout_marginEnd="20dp"
         android:text="@string/btn_login_title"
         android:textAllCaps="false"
-        android:textSize="24sp"
+        android:textSize="@dimen/text_24"
         app:layout_constraintBottom_toTopOf="@+id/btn_registration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -39,8 +39,9 @@
         android:id="@+id/checkBox_push"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/margin_30"
         android:text="@string/check_box_push_title"
+        android:textSize="@dimen/text_13"
         app:layout_constraintStart_toStartOf="@+id/btn_registration"
         app:layout_constraintTop_toBottomOf="@+id/btn_registration" />
 
@@ -49,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/check_box_location_title"
+        android:textSize="@dimen/text_13"
         app:layout_constraintStart_toStartOf="@+id/checkBox_push"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_push" />
 

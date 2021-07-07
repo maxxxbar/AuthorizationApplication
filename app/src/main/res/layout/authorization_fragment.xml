@@ -5,8 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingEnd="15dp"
-        android:paddingStart="15dp"
+        android:paddingEnd="@dimen/padding_15"
+        android:paddingStart="@dimen/padding_15"
         tools:context=".ui.authorization.AuthorizationFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -21,8 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/btn_enter_phone_title"
-            android:textSize="36sp"
-            android:textStyle="bold"
+            android:textSize="@dimen/text_36"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/auth_guideline" />
 
@@ -30,7 +29,7 @@
             android:id="@+id/enter_phone_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/margin_15"
             android:text="@string/enter_phone_title"
             app:layout_constraintStart_toStartOf="@+id/btn_enter_phone"
             app:layout_constraintTop_toBottomOf="@+id/btn_enter_phone" />
@@ -38,11 +37,9 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/height_40"
             android:background="@drawable/rectangle"
             android:orientation="horizontal"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/enter_phone_title"
             app:layout_constraintTop_toBottomOf="@+id/enter_phone_title">
@@ -52,8 +49,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginStart="0dp"
-                android:layout_marginEnd="0dp"
+                android:layout_marginStart="@dimen/margin_0"
+                android:layout_marginEnd="@dimen/margin_0"
                 android:layout_weight="1"
                 android:backgroundTint="@color/blue"
                 android:entries="@array/numberPrefix" />
@@ -77,8 +74,9 @@
             android:id="@+id/btn_get_code"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="15dp"
+            android:layout_height="@dimen/height_60"
+            android:layout_marginTop="@dimen/margin_15"
+            android:textSize="@dimen/text_24"
             android:text="@string/btn_get_code_title"
             android:textAllCaps="false"
             app:cornerRadius="10dp"
@@ -90,8 +88,9 @@
             android:id="@+id/btn_sing_in"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/height_40"
             android:textAllCaps="false"
+            android:textSize="@dimen/text_16"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_get_code"
@@ -101,10 +100,11 @@
             android:id="@+id/textView_terms_of_use"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/margin_10"
             android:gravity="center"
             android:text="@string/terms_of_use_title"
-            android:textColor="#80FFFFFF"
+            android:textColor="@color/white_80"
+            tools:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
