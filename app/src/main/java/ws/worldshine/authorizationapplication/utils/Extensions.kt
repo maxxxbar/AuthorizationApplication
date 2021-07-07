@@ -11,6 +11,9 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener
 
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
@@ -55,3 +58,10 @@ fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>) {
         LinkMovementMethod.getInstance() // without LinkMovementMethod, link can not click
     this.setText(spannableString, TextView.BufferType.SPANNABLE)
 }
+
+fun Activity.setKeyboardEventListener(lifecycleOwner: LifecycleOwner, listener: KeyboardVisibilityEventListener) =
+    KeyboardVisibilityEvent.setEventListener(
+        activity = this,
+        lifecycleOwner = lifecycleOwner,
+        listener = listener
+    )

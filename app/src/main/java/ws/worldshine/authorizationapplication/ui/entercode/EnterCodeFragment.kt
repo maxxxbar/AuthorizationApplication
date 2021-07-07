@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent
 import ws.worldshine.authorizationapplication.R
 import ws.worldshine.authorizationapplication.databinding.EnterCodeFragmentBinding
 import ws.worldshine.authorizationapplication.utils.hideKeyboard
+import ws.worldshine.authorizationapplication.utils.setKeyboardEventListener
 
 class EnterCodeFragment : Fragment() {
 
@@ -24,6 +24,7 @@ class EnterCodeFragment : Fragment() {
     private lateinit var editTextTwo: EditText
     private lateinit var editTextThree: EditText
     private lateinit var editTextFour: EditText
+    private lateinit var numberText: TextView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,27 +35,18 @@ class EnterCodeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.background = AppCompatResources.getDrawable(requireContext(),R.drawable.ic_background)
+        view.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
         initViews()
         binding.root.setOnClickListener { hideKeyboard() }
         initEditText()
         setTimer()
-        val number = arguments?.getString("phone")
-        val numberDescriptionText = getString(R.string.textView_sms_description)
-        binding.textViewSmsDescription.text = String.format(numberDescriptionText, number)
-        KeyboardVisibilityEvent.setEventListener(
-            requireActivity(),
-            viewLifecycleOwner,
-            {
+        setNumber()
+        requireActivity().setKeyboardEventListener(viewLifecycleOwner, this::switchBackground)
+    }
 
-                if (it) {
-                    view.background =
-                        AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background_without_bottom)
-                } else {
-                    view.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
-                }
-
-            })
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     private fun initViews() {
@@ -62,15 +54,17 @@ class EnterCodeFragment : Fragment() {
         editTextTwo = binding.editTextTwo
         editTextThree = binding.editTextThree
         editTextFour = binding.editTextFour
+        numberText = binding.textViewSmsDescription
+    }
+
+    private fun setNumber() {
+        val number = arguments?.getString("phone")
+        val numberDescriptionText = getString(R.string.textView_sms_description)
+        numberText.text = String.format(numberDescriptionText, number)
     }
 
     private fun initEditText() {
-        editTextOne.background = null
-        editTextTwo.background = null
-        editTextThree.background = null
-        editTextFour.background = null
-
-        editTextOne.addTextChangedListener() {
+        editTextOne.addTextChangedListener {
             it?.toString()?.let { s ->
                 if (s.isNotEmpty()) {
                     editTextTwo.requestFocus()
@@ -114,9 +108,13 @@ class EnterCodeFragment : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+    private fun switchBackground(value: Boolean) {
+        if (value) {
+            view?.background =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background_without_bottom)
+        } else {
+            view?.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
+        }
     }
 
     private fun setTimer() {
