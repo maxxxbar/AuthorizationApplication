@@ -93,8 +93,8 @@
                     android:digits="1234567890"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="numberSigned"
-                    android:maxLength="1"
+                    android:inputType="number"
+                    android:maxLength="2"
                     tools:ignore="LabelFor" />
             </LinearLayout>
 
@@ -116,7 +116,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="numberSigned"
-                    android:maxLength="1"
+                    android:maxLength="2"
                     tools:ignore="LabelFor" />
             </LinearLayout>
 
@@ -138,7 +138,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="numberSigned"
-                    android:maxLength="1"
+                    android:maxLength="2"
                     tools:ignore="LabelFor" />
             </LinearLayout>
 
@@ -159,7 +159,8 @@
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="numberSigned"
-                    android:maxLength="1"
+                    android:maxLength="2"
+                    android:imeOptions="actionDone"
                     tools:ignore="LabelFor" />
             </LinearLayout>
 

@@ -20,6 +20,10 @@
         <item name="android:textColorLink">@color/white_30</item>
     </style>
 
+    <style name="App.DisabledButton" parent="Widget.MaterialComponents.Button.OutlinedButton" />
+
+    <style name="App.EnabledButton" parent="Widget.MaterialComponents.Button" />
+
     <style name="App.EditText" parent="Widget.AppCompat.EditText">
         <item name="backgroundTint">@color/blue</item>
         <item name="android:textCursorDrawable">@color/blue</item>

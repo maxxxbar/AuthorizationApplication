@@ -73,8 +73,8 @@
         </LinearLayout>
 
         <Button
+            style="@style/App.DisabledButton"
             android:id="@+id/btn_get_code"
-            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_60"
             android:layout_marginTop="@dimen/margin_15"

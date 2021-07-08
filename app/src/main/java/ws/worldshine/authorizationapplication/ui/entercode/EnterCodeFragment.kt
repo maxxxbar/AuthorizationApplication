@@ -1,13 +1,14 @@
 package ws.worldshine.authorizationapplication.ui.entercode
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import ws.worldshine.authorizationapplication.R
@@ -37,8 +38,11 @@ class EnterCodeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
         initViews()
-        binding.root.setOnClickListener { hideKeyboard() }
-        initEditText()
+        binding.root.setOnClickListener {
+            view.findFocus()?.clearFocus()
+            hideKeyboard()
+        }
+        setupEditText()
         setTimer()
         setNumber()
         requireActivity().setKeyboardEventListener(viewLifecycleOwner, this::switchBackground)
@@ -63,49 +67,11 @@ class EnterCodeFragment : Fragment() {
         numberText.text = String.format(numberDescriptionText, number)
     }
 
-    private fun initEditText() {
-        editTextOne.addTextChangedListener {
-            it?.toString()?.let { s ->
-                if (s.isNotEmpty()) {
-                    editTextTwo.requestFocus()
-                    editTextTwo.isCursorVisible = true
-                }
-            }
-        }
-
-        editTextTwo.addTextChangedListener() {
-            it?.toString()?.let { s ->
-                if (s.isNotEmpty()) {
-                    editTextThree.requestFocus()
-                    editTextThree.isCursorVisible = true
-                } else {
-                    editTextOne.requestFocus()
-                    editTextOne.isCursorVisible = true
-                }
-            }
-        }
-
-        editTextThree.addTextChangedListener() {
-            it?.toString()?.let { s ->
-                if (s.isNotEmpty()) {
-                    editTextFour.requestFocus()
-                    editTextFour.isCursorVisible = true
-                } else {
-                    editTextTwo.requestFocus()
-                    editTextTwo.isCursorVisible = true
-                }
-            }
-        }
-
-        editTextFour.addTextChangedListener() {
-            it?.toString()?.let { s ->
-                if (s.isEmpty()) {
-                    editTextThree.requestFocus()
-                    editTextThree.isCursorVisible = true
-                }
-            }
-        }
-
+    private fun setupEditText() {
+        addWatcher(editTextOne, editTextTwo)
+        addWatcher(editTextTwo, editTextThree)
+        addWatcher(editTextThree, editTextFour)
+        addWatcher(editTextFour, null)
     }
 
     private fun switchBackground(value: Boolean) {
@@ -120,6 +86,35 @@ class EnterCodeFragment : Fragment() {
     private fun setTimer() {
         val text = getString(R.string.textView_new_code_description)
         viewModel.timer(text) { value -> binding.textViewNewCodeDescription.text = value }
+    }
+
+    private fun addWatcher(editText: EditText, editTextToFocus: EditText? = null) {
+        var beforeText: CharSequence = ""
+        val textWatched = object : TextWatcher {
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                if (editText.text.isNotEmpty()) editText.setSelection(editText.text.toString().length)
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (s.length >= 2) {
+                    val beforeChars = beforeText.toList()
+                    val newChar = s.toList().firstOrNull {
+                        !beforeChars.contains(it)
+                    } ?: s.toString().substring(s.length - 1, s.length)
+                    editText.setText(newChar.toString())
+                }
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                beforeText = s.toString()
+                if (beforeText.isNotEmpty()) {
+                    editText.setSelection(editText.text.toString().length)
+                    editTextToFocus?.requestFocus()
+                }
+            }
+        }
+        editText.addTextChangedListener(textWatched)
     }
 
 }

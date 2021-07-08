@@ -107,13 +107,9 @@ class AuthorizationFragment : Fragment() {
         singInBtn.text = t
     }
 
-    private fun disableCodeButton() {
-        lifecycleScope.launch {
-            viewModel.getDisabledButton { value ->
-                getCodeBtn.isEnabled = value
-            }
-        }
-    }
+    private fun disableCodeButton() =
+        lifecycleScope.launch { viewModel.getDisabledButton { value -> getCodeBtn.isEnabled = value } }
+
 
     private fun initViews() {
         singInBtn = binding.btnSingIn
