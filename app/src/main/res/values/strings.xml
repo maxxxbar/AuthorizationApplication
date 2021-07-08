@@ -9,7 +9,7 @@
     <string name="btn_enter_phone_title">Ввод телефона</string>
     <string name="enter_phone_title">Введите телефон</string>
     <string name="btn_get_code_title">Получить код</string>
-    <string name="terms_of_use_title">Продолжая, вы принимаете Условия использования и Политку конфиденциальности</string>
+    <string name="terms_of_use_title">Продолжая, вы принимаете Условия использования и Политику конфиденциальности</string>
     <string name="btn_sing_in">Зарегестрирован? Войти</string>
     <string name="entry_code_title">Ввод кода</string>
     <string name="textView_sms_title">Мы отправили СМС с кодом</string>
@@ -17,6 +17,9 @@
     <string name="textView_new_code_title">Новый код можно получить</string>
     <string name="textView_new_code_description">через %1$s секунд</string>
     <string name="terms_of_use">Политика в отношении обработки персональных данных</string>
+    <string name="russian_phone_template">[000] [000]-[00]-[00]</string>
+    <string name="term_of_use">Условия использования</string>
+    <string name="privacy_policy">Политику конфиденциальности</string>
     <string-array name="numberPrefix">
         <item>+7</item>
     </string-array>

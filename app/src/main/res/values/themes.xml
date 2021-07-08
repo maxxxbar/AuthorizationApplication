@@ -11,13 +11,18 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/blue</item>
+        <item name="android:navigationBarColor">@color/blue</item>
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/nunito</item>
         <item name="checkboxStyle">@style/App.CheckBox</item>
         <item name="editTextStyle">@style/App.EditText</item>
         <item name="android:textColorLink">@color/white_30</item>
     </style>
+
+    <style name="App.DisabledButton" parent="Widget.MaterialComponents.Button.OutlinedButton" />
+
+    <style name="App.EnabledButton" parent="Widget.MaterialComponents.Button" />
 
     <style name="App.EditText" parent="Widget.AppCompat.EditText">
         <item name="backgroundTint">@color/blue</item>

@@ -9,8 +9,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.os.bundleOf
 import androidx.core.text.bold
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +23,7 @@ import ws.worldshine.authorizationapplication.R
 import ws.worldshine.authorizationapplication.databinding.AuthorizationFragmentBinding
 import ws.worldshine.authorizationapplication.utils.hideKeyboard
 import ws.worldshine.authorizationapplication.utils.makeLinks
+import ws.worldshine.authorizationapplication.utils.setKeyboardEventListener
 
 class AuthorizationFragment : Fragment() {
 
@@ -54,13 +57,38 @@ class AuthorizationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        view.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
         initViews()
         setSingInButton()
         initCodeButton()
-        binding.root.setOnClickListener { hideKeyboard() }
-        val listener = MaskedTextChangedListener.installOn(editText, "[000] [000]-[00]-[00]", valueListener)
-        termOfUseTitle.makeLinks(createLink("Условия использования"), createLink("Политку конфиденциальности"))
+        openKeyboardHandler()
+        view.setOnClickListener {
+            hideKeyboard()
+            view.findFocus()?.clearFocus()
+        }
+        val listener =
+            MaskedTextChangedListener.installOn(editText, getString(R.string.russian_phone_template), valueListener)
         editText.hint = listener.placeholder()
+        termOfUseTitle.makeLinks(
+            createLink(getString(R.string.term_of_use)),
+            createLink(getString(R.string.privacy_policy))
+        )
+    }
+
+    private fun openKeyboardHandler() {
+        requireActivity().setKeyboardEventListener(viewLifecycleOwner) { isVisible ->
+            termOfUseTitle.isVisible = !isVisible
+            switchBackground(isVisible)
+        }
+    }
+
+    private fun switchBackground(value: Boolean) {
+        if (value) {
+            view?.background =
+                AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background_without_bottom)
+        } else {
+            view?.background = AppCompatResources.getDrawable(requireContext(), R.drawable.ic_background)
+        }
     }
 
     private fun initCodeButton() {
@@ -79,13 +107,9 @@ class AuthorizationFragment : Fragment() {
         singInBtn.text = t
     }
 
-    private fun disableCodeButton() {
-        lifecycleScope.launch {
-            viewModel.getDisabledButton { value ->
-                getCodeBtn.isEnabled = value
-            }
-        }
-    }
+    private fun disableCodeButton() =
+        lifecycleScope.launch { viewModel.getDisabledButton { value -> getCodeBtn.isEnabled = value } }
+
 
     private fun initViews() {
         singInBtn = binding.btnSingIn
@@ -102,6 +126,7 @@ class AuthorizationFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        editText.hint = null
     }
 
 }
