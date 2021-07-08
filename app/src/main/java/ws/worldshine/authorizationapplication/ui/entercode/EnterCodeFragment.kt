@@ -3,6 +3,7 @@ package ws.worldshine.authorizationapplication.ui.entercode
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,6 +73,10 @@ class EnterCodeFragment : Fragment() {
         addWatcher(editTextTwo, editTextThree)
         addWatcher(editTextThree, editTextFour)
         addWatcher(editTextFour, null)
+        addDelKeyListener(editTextOne, null)
+        addDelKeyListener(editTextTwo, editTextOne)
+        addDelKeyListener(editTextThree, editTextTwo)
+        addDelKeyListener(editTextFour, editTextThree)
     }
 
     private fun switchBackground(value: Boolean) {
@@ -86,6 +91,15 @@ class EnterCodeFragment : Fragment() {
     private fun setTimer() {
         val text = getString(R.string.textView_new_code_description)
         viewModel.timer(text) { value -> binding.textViewNewCodeDescription.text = value }
+    }
+
+    private fun addDelKeyListener(editText: EditText, prevEditText: EditText?) {
+        editText.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_DEL) {
+                if (editText.text.toString().isEmpty()) prevEditText?.requestFocus()
+            }
+            false
+        }
     }
 
     private fun addWatcher(editText: EditText, editTextToFocus: EditText? = null) {
