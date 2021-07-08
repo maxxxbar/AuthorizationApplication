@@ -9,7 +9,7 @@ class AuthorizationFragmentViewModel : ViewModel() {
     private val phoneNumber = MutableStateFlow("")
 
     suspend fun setDisabledButton(value: Boolean) = disabledButton.emit(value)
-    suspend fun getDisabledButton(f: (value: Boolean) -> Unit) = disabledButton.collect { value -> f(value) }
+    suspend fun getDisabledButton(f: (isDisabled: Boolean) -> Unit) = disabledButton.collect { isDisabled -> f(isDisabled) }
 
     suspend fun setPhoneNumber(number: String) = phoneNumber.emit(number)
     fun getPhoneNumber() = phoneNumber.value

@@ -5,8 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingEnd="@dimen/padding_15"
         android:paddingStart="@dimen/padding_15"
+        android:paddingEnd="@dimen/padding_15"
         tools:context=".ui.authorization.AuthorizationFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -72,15 +72,28 @@
                 tools:text="8 123 222 22 33" />
         </LinearLayout>
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_15"
+            android:background="@drawable/rectangle"
+            android:clickable="false"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_get_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
         <Button
-            style="@style/App.DisabledButton"
             android:id="@+id/btn_get_code"
+            style="@style/App.DisabledButton"
             android:layout_width="0dp"
             android:layout_height="@dimen/height_60"
             android:layout_marginTop="@dimen/margin_15"
-            android:textSize="@dimen/text_24"
+            android:enabled="false"
             android:text="@string/btn_get_code_title"
             android:textAllCaps="false"
+            android:textSize="@dimen/text_24"
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,10 +119,10 @@
             android:gravity="center"
             android:text="@string/terms_of_use_title"
             android:textColor="@color/white_80"
-            tools:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:textColor="@color/black" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
