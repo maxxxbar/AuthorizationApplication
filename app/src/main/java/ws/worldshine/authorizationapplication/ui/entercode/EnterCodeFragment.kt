@@ -94,9 +94,12 @@ class EnterCodeFragment : Fragment() {
     }
 
     private fun addDelKeyListener(editText: EditText, prevEditText: EditText?) {
-        editText.setOnKeyListener { _, keyCode, _ ->
-            if (keyCode == KeyEvent.KEYCODE_DEL) {
-                if (editText.text.toString().isEmpty()) prevEditText?.requestFocus()
+        editText.setOnKeyListener { _, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_DEL && event.action == KeyEvent.ACTION_DOWN) {
+                if (editText.text.isEmpty()) {
+                    prevEditText?.requestFocus()
+                    prevEditText?.text = null
+                }
             }
             false
         }
@@ -107,7 +110,7 @@ class EnterCodeFragment : Fragment() {
         val textWatched = object : TextWatcher {
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                if (editText.text.isNotEmpty()) editText.setSelection(editText.text.toString().length)
+                if (editText.text.isNotEmpty()) editText.setSelection(editText.text.length)
             }
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -123,7 +126,7 @@ class EnterCodeFragment : Fragment() {
             override fun afterTextChanged(s: Editable) {
                 beforeText = s.toString()
                 if (beforeText.isNotEmpty()) {
-                    editText.setSelection(editText.text.toString().length)
+                    editText.setSelection(editText.text.length)
                     editTextToFocus?.requestFocus()
                 }
             }
