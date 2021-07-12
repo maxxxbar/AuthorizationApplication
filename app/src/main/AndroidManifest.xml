@@ -8,12 +8,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AuthorizationApplication">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
+            android:theme="@style/AppTheme.Launcher"
             android:name=".SplashScreen"
             android:screenOrientation="portrait">
             <intent-filter>
