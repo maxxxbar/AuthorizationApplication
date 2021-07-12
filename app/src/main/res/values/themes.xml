@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.AuthorizationApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -18,6 +18,10 @@
         <item name="checkboxStyle">@style/App.CheckBox</item>
         <item name="editTextStyle">@style/App.EditText</item>
         <item name="android:textColorLink">@color/white_30</item>
+    </style>
+
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 
     <style name="App.DisabledButton" parent="Widget.MaterialComponents.Button">
